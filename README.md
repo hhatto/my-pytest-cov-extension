@@ -10,5 +10,6 @@ $ python ./progressbar.py htmlcov/index.html
 
 
 ## etc
-static/ directry from [Bootstrap](https://getbootstrap.com/)
+static/ directry is using [Bootstrap](https://getbootstrap.com/).
+
 see Licese of Bootstrap: https://github.com/twbs/bootstrap/blob/v4-dev/LICENSE
