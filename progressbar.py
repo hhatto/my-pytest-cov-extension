@@ -10,16 +10,24 @@ def get_progressbar_element(percentage):
     percentage = int(percentage)
     if percentage >= 70:
         # green
-        progressbar_child_element.attrib['class'] = "progress-bar progress-bar-success progress-bar-striped"
+        progressbar_child_element.attrib[
+            "class"
+        ] = "progress-bar progress-bar-success progress-bar-striped"
     elif percentage >= 50:
-        progressbar_child_element.attrib['class'] = "progress-bar progress-bar-warning progress-bar-striped"
+        progressbar_child_element.attrib[
+            "class"
+        ] = "progress-bar progress-bar-warning progress-bar-striped"
     else:
-        progressbar_child_element.attrib['class'] = "progress-bar progress-bar-danger progress-bar-striped"
-    progressbar_child_element.attrib['role'] = "progressbar"
-    progressbar_child_element.attrib['aria-valuenow'] = "10"  # "{}".format(percentage)
-    progressbar_child_element.attrib['aria-valuemin'] = "0"
-    progressbar_child_element.attrib['aria-valuemax'] = "100"
-    progressbar_child_element.attrib['style'] = "width:{}%; text-align:left; padding-left: 5px;".format(percentage)
+        progressbar_child_element.attrib[
+            "class"
+        ] = "progress-bar progress-bar-danger progress-bar-striped"
+    progressbar_child_element.attrib["role"] = "progressbar"
+    progressbar_child_element.attrib["aria-valuenow"] = "10"  # "{}".format(percentage)
+    progressbar_child_element.attrib["aria-valuemin"] = "0"
+    progressbar_child_element.attrib["aria-valuemax"] = "100"
+    progressbar_child_element.attrib[
+        "style"
+    ] = "width:{}%; text-align:left; padding-left: 5px;".format(percentage)
     progressbar_child_element.text = "{}%".format(percentage)
     progressbar_element = Element("div")
     progressbar_element.attrib["class"] = "progress"
@@ -39,17 +47,17 @@ def add_progressbar(input_filename, output_filename):
     v.attrib["style"] = "text-align:center;width:20em;"
     # table body
     for elm in html.xpath('//*[@id="index"]/table/tbody/tr/td[5]'):
-        percentage = elm.text.split("%")[0]    # xx% -> xx
+        percentage = elm.text.split("%")[0]  # xx% -> xx
         elm.text = ""
         elm.append(get_progressbar_element(percentage))
     # table footer
     elm = html.xpath('//*[@id="index"]/table/tfoot/tr/td[@class="right"]')[0]
-    percentage = elm.text.split("%")[0]    # xx% -> xx
+    percentage = elm.text.split("%")[0]  # xx% -> xx
     elm.text = ""
     elm.append(get_progressbar_element(percentage))
 
     # output html
-    with open(output_filename, 'w') as fp:
+    with open(output_filename, "w") as fp:
         fp.write(lhtml.tostring(html, encoding=str))
 
 
@@ -62,7 +70,7 @@ def add_bootstrap_in_html_header(input_filename, output_filename):
     bootstrap.attrib["type"] = "text/css"
     html = lhtml.fromstring(htmlstring)
     html.head.append(bootstrap)
-    with open(output_filename, 'w') as fp:
+    with open(output_filename, "w") as fp:
         fp.write(lhtml.tostring(html, encoding=str))
 
 
@@ -84,5 +92,5 @@ def main():
     staticgen(sys.argv[1])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
