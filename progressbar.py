@@ -1,4 +1,6 @@
+import os
 import sys
+import shutil
 import lxml.html as lhtml
 from lxml.html import Element
 
@@ -64,9 +66,22 @@ def add_bootstrap_in_html_header(input_filename, output_filename):
         fp.write(lhtml.tostring(html, encoding=str))
 
 
+def staticgen(html_path):
+    target_dir = os.path.dirname(html_path)
+    target_static_dir = os.path.join(target_dir, "static")
+    if os.path.exists(target_static_dir):
+        # ignore & finish
+        return
+    script_static_dir = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "static"
+    )
+    shutil.copytree(script_static_dir, target_static_dir)
+
+
 def main():
     add_bootstrap_in_html_header(sys.argv[1], sys.argv[1])
     add_progressbar(sys.argv[1], sys.argv[1])
+    staticgen(sys.argv[1])
 
 
 if __name__ == '__main__':
