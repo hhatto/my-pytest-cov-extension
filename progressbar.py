@@ -43,10 +43,11 @@ def add_progressbar(input_filename, output_filename):
     html = lhtml.fromstring(htmlstring)
 
     # table header
+    th_num = len(html.xpath('//*[@id="index"]/table/thead/tr/th'))
     v = html.xpath('//*[@id="index"]/table/thead/tr/th[@class="right"]')[0]
     v.attrib["style"] = "text-align:center;width:20em;"
     # table body
-    for elm in html.xpath('//*[@id="index"]/table/tbody/tr/td[5]'):
+    for elm in html.xpath(f'//*[@id="index"]/table/tbody/tr/td[{th_num}]'):
         percentage = elm.text.split("%")[0]  # xx% -> xx
         elm.text = ""
         elm.append(get_progressbar_element(percentage))
