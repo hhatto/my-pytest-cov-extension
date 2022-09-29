@@ -10,11 +10,11 @@ $ python ./progressbar.py htmlcov/index.html
 
 before:
 
-[](static/img/jinja2_before.png)
+![](static/img/jinja2_before.png)
 
 after:
 
-[](static/img/jinja2_after.png)
+![](static/img/jinja2_after.png)
 
 
 ## etc
