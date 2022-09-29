@@ -8,6 +8,14 @@
 $ python ./progressbar.py htmlcov/index.html
 ```
 
+before:
+
+[](./static/img/jinja2_before.png)
+
+after:
+
+[](./static/img/jinja2_after.png)
+
 
 ## etc
 static/ directry is using [Bootstrap](https://getbootstrap.com/).
