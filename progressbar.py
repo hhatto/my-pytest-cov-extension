@@ -43,7 +43,7 @@ def add_progressbar(input_filename, output_filename):
     html = lhtml.fromstring(htmlstring)
 
     # table header
-    v = html.xpath('//*[@id="index"]/table/thead/tr/th[@class="right shortkey_c"]')[0]
+    v = html.xpath('//*[@id="index"]/table/thead/tr/th[@class="right"]')[0]
     v.attrib["style"] = "text-align:center;width:20em;"
     # table body
     for elm in html.xpath('//*[@id="index"]/table/tbody/tr/td[5]'):
