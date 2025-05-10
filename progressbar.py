@@ -97,10 +97,29 @@ def staticgen(html_path):
     shutil.copytree(script_static_dir, target_static_dir)
 
 
+def process_html_file(file_path):
+    if not os.path.exists(file_path):
+        return
+    add_bootstrap_in_html_header(file_path, file_path)
+    add_progressbar(file_path, file_path)
+
+
 def main():
-    add_bootstrap_in_html_header(sys.argv[1], sys.argv[1])
-    add_progressbar(sys.argv[1], sys.argv[1])
-    staticgen(sys.argv[1])
+    html_path = sys.argv[1]
+    html_dir = os.path.dirname(html_path)
+
+    # Process index.html (main file)
+    process_html_file(html_path)
+
+    # Process additional HTML files if they exist
+    function_index_path = os.path.join(html_dir, "function_index.html")
+    class_index_path = os.path.join(html_dir, "class_index.html")
+
+    process_html_file(function_index_path)
+    process_html_file(class_index_path)
+
+    # Copy static files once for all HTML files
+    staticgen(html_path)
 
 
 if __name__ == "__main__":
