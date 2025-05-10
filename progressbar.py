@@ -70,7 +70,17 @@ def add_bootstrap_in_html_header(input_filename, output_filename):
     bootstrap.attrib["href"] = "static/css/bootstrap.min.css"
     bootstrap.attrib["type"] = "text/css"
     html = lhtml.fromstring(htmlstring)
-    html.head.append(bootstrap)
+
+    # find link tag
+    existing_links = html.head.findall("link")
+    if existing_links:
+        first_link = existing_links[0]
+        first_link_index = html.head.index(first_link)
+        html.head.insert(first_link_index, bootstrap)
+    else:
+        # not found css
+        html.head.append(bootstrap)
+
     with open(output_filename, "w") as fp:
         fp.write(lhtml.tostring(html, encoding=str))
 
