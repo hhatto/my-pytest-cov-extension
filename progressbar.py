@@ -10,24 +10,24 @@ def get_progressbar_element(percentage):
     percentage = int(percentage)
     if percentage >= 70:
         # green
-        progressbar_child_element.attrib[
-            "class"
-        ] = "progress-bar progress-bar-success progress-bar-striped"
+        progressbar_child_element.attrib["class"] = (
+            "progress-bar progress-bar-success progress-bar-striped"
+        )
     elif percentage >= 50:
-        progressbar_child_element.attrib[
-            "class"
-        ] = "progress-bar progress-bar-warning progress-bar-striped"
+        progressbar_child_element.attrib["class"] = (
+            "progress-bar progress-bar-warning progress-bar-striped"
+        )
     else:
-        progressbar_child_element.attrib[
-            "class"
-        ] = "progress-bar progress-bar-danger progress-bar-striped"
+        progressbar_child_element.attrib["class"] = (
+            "progress-bar progress-bar-danger progress-bar-striped"
+        )
     progressbar_child_element.attrib["role"] = "progressbar"
     progressbar_child_element.attrib["aria-valuenow"] = "10"  # "{}".format(percentage)
     progressbar_child_element.attrib["aria-valuemin"] = "0"
     progressbar_child_element.attrib["aria-valuemax"] = "100"
-    progressbar_child_element.attrib[
-        "style"
-    ] = "width:{}%; text-align:left; padding-left: 5px;".format(percentage)
+    progressbar_child_element.attrib["style"] = (
+        "width:{}%; text-align:left; padding-left: 5px;".format(percentage)
+    )
     progressbar_child_element.text = "{}%".format(percentage)
     progressbar_element = Element("div")
     progressbar_element.attrib["class"] = "progress"
